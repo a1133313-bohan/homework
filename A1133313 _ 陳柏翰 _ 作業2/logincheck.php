@@ -15,12 +15,4 @@ if(isset($_POST["uID"])&&isset($_POST["uPWD"])){
         header("Refresh:2;url=login.php");
     }
 }
-
-
-
-
-
-
-
-
 ?>
