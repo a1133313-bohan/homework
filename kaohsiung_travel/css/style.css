@@ -1,0 +1,197 @@
+/* 全站基礎與高質感玻璃擬物化（Glassmorphism）宣告 */
+:root {
+    --primary-color: #2c5e3b; /* 戶外森林綠 */
+    --accent-color: #e67e22;  /* 夕陽活力橘 */
+    --sidebar-bg: rgba(255, 255, 255, 0.85);
+    --card-bg: rgba(255, 255, 255, 0.9);
+}
+
+body {
+    margin: 0;
+    font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    background: linear-gradient(135deg, #eef2f3 0%, #dfe9f3 100%);
+    background-attachment: fixed;
+    color: #333;
+}
+
+/* 固定側邊欄：始終留存於網頁左側 */
+.sidebar-container {
+    width: 260px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(10px);
+    box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+    padding: 30px 20px;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(255,255,255,0.4);
+    z-index: 100;
+}
+
+.sidebar-container h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-list li {
+    margin-bottom: 12px;
+}
+
+.menu-list a {
+    display: block;
+    padding: 14px 18px;
+    color: #4a5568;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.menu-list a:hover, .menu-list a.active {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateX(5px);
+    box-shadow: 0 4px 10px rgba(44,94,59,0.3);
+}
+
+.submenu {
+    list-style: none;
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+.submenu a {
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+/* 主內容區位移以防被側邊欄遮擋 */
+.main-wrapper {
+    margin-left: 260px;
+    padding: 40px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* 精美卡片式格線版面 */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.attraction-card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.6);
+    position: relative;
+}
+
+.attraction-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.card-img-box {
+    width: 100%;
+    height: 200px;
+    background: #e0e0e0;
+    position: relative;
+}
+
+.card-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    color: #2d3748;
+}
+
+.card-desc {
+    font-size: 14px;
+    color: #718096;
+    line-height: 1.6;
+    height: 70px;
+    overflow: hidden;
+}
+
+.card-meta {
+    font-size: 13px;
+    color: #a0aec0;
+    margin: 10px 0;
+}
+
+.card-actions {
+    display: flex;
+    border-top: 1px solid #edf2f7;
+    margin-top: 15px;
+}
+
+.action-btn {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: #4a5568;
+    transition: background 0.2s;
+}
+
+.action-btn:first-child {
+    border-right: 1px solid #edf2f7;
+}
+
+.action-btn:hover {
+    background: #f7fafc;
+    color: var(--primary-color);
+}
+
+.action-btn.liked {
+    color: #e74c3c;
+}
+
+/* 彈出視窗（Modal）基本樣式 */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    width: 450px;
+    max-width: 90%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
